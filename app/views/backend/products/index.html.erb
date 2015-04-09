@@ -1,3 +1,22 @@
 <h1>商品列表</h1>
 
+<table class="table table-hover">
+ <tr>
+   <td>名稱</td>
+   <td>價錢</td>
+   <td>圖片</td>
+   <td>管理按鈕</td>
+ </tr>
+  <br>
+  <% @products.each do |p| %>
+  <tr>
+    <td><%= p.name %></td>
+    <td><%= p.price %></td>
+    <td><%= p.image %></td>
+    <td><%= link_to '編輯', edit_backend_product_path(p.id), class:'btn btn-success' %>
+      <%= link_to '刪除',backend_product_path(p.id), :method => :delete, class:'btn btn-success', data: {confirm: "確定要刪除嗎"} %></td>
+  </tr>
+  <% end %>
+</table>
+
 <%= link_to '新增', new_backend_product_path, class:'btn btn-success' %>

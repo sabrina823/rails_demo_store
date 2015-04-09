@@ -8,11 +8,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">商店管理系統</a>
+      <%= link_to "商店管理系統", backend_dashboard_path, :class => "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "商品管理", backend_products_path %></li>
+            <li><%= link_to "新增商品", new_backend_product_path %></li>
+      </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li class="dropdown">

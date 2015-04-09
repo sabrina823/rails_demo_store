@@ -1,7 +1,7 @@
 class Backend::ProductsController < Backend::BaseController
 
   def index
-    # TODO
+    @products = Product.all
   end
 
   def new
@@ -18,15 +18,23 @@ class Backend::ProductsController < Backend::BaseController
   end
 
   def edit
-    # TODO
+    @product = Product.find(params[:id])
   end
 
   def update
-    # TODO
+     @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to backend_products_path
+    else
+      render :edit
+    end
   end
 
   def destroy
-    # TODO
+    @product = Product.find(params[:id])
+     if @product.destroy
+     redirect_to backend_products_path
+     end
   end
 
   def product_params
